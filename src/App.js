@@ -39,6 +39,14 @@ class App extends Component {
     })
   }
 
+  deleteElememt = (e) => {
+    e.preventDefault();
+    this.setState({tasks: this.state.tasks.filter(function(task) { 
+      console.log(e.target.getAttribute("id"))
+      return task.id !== e.target.getAttribute("id")
+    })});
+  }
+
   render() {
     const {task, tasks} = this.state;
 
@@ -48,7 +56,7 @@ class App extends Component {
           <label htmlFor="taskInput">Enter task</label>
           <input type="text" id="taskInput" onChange={this.handleChange} value={task.text}/>
           <button type="submit" onClick={this.onSubmitTask}>Add Task</button>
-          <Overview tasks={tasks} />
+          <Overview tasks={tasks} delete={this.deleteElememt}/>
         </form>
       </div>
     );

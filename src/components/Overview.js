@@ -7,7 +7,7 @@ const Overview = (props) => {
         <ul>
             {tasks.map((task) => {
                 console.log(task)
-                return <li key={task.id}>Task {task.number} {task.text}</li>
+                return <li key={task.id}>Task {task.number} {task.text} <button id={task.id} className="delete" onClick={props.delete}>Remove</button> </li>
             })}
         </ul>
     )
